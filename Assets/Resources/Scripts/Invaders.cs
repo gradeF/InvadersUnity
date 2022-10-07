@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Invaders : MonoBehaviour
 {
 	#region Public Fields
 	public GameObject[] prefabs;
+	public GameObject Laser;
+	public float MaxTime = 2.0f;
 	public int row = 5;
 	public int col = 6;
-    #endregion
+	#endregion
 
 
-    #region Protected Fields
-    #endregion
+	#region Protected Fields
+	#endregion
 
 
-    #region Private Fields
+	#region Private Fields
+	float timer = 0.0f;
     #endregion
 
 
@@ -31,7 +35,8 @@ public class Invaders : MonoBehaviour
 				Vector3 position = rowPosition;
 				position.x += cols * 0.8f;
 				invader.transform.position = position;
-            }
+				GameManager.instance.Invaders.Add(invader);
+			}
         }
     }
     private void Start()
@@ -40,7 +45,12 @@ public class Invaders : MonoBehaviour
 	}
 	private void Update()
 	{
-		
+		timer += Time.deltaTime;
+		if(timer >= MaxTime)
+        {
+			Fire();
+			timer = 0.0f;
+        }
 	}
 	#endregion
 
@@ -54,5 +64,17 @@ public class Invaders : MonoBehaviour
 
 
 	#region Private Methods
+
+	void Fire()
+    {
+		var invaderGroups = GameManager.instance.Invaders.GroupBy(i => i.transform.position.x);
+		var randomGroup = invaderGroups.ElementAt(Random.Range(0, invaderGroups.Count()));
+		var orderedGroup = randomGroup.OrderBy(i => i.transform.position.y);
+
+		GameObject bottomInvader = orderedGroup.First();
+
+		Instantiate(Laser, transform);
+	}
+
 	#endregion
 }

@@ -696,6 +696,8 @@ MonoBehaviour:
   - {fileID: 1340011132878626609, guid: 8e22d34b55e52bd4ab5740c839b1161e, type: 3}
   - {fileID: 2302443935324737886, guid: c6cd7171ca7de10459a06217349e2284, type: 3}
   - {fileID: 7928560484761483405, guid: 2a1a3bd8a7adc16488fdef46e09bf2de, type: 3}
+  Laser: {fileID: 802682916734400196, guid: 0924b15b689263541a85e2cc84f9e21c, type: 3}
+  MaxTime: 2
   row: 5
   col: 6
 --- !u!4 &1308428995

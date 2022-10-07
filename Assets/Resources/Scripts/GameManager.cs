@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 	public bool isGameOver = false;
 	public TMP_Text scoreText;
 	public GameObject gameoverUI;
+	public List<GameObject> Invaders;
 	#endregion
 
 

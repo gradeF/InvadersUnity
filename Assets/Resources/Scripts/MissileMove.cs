@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvaderTrigger : MonoBehaviour
+public class MissileMove : MonoBehaviour
 {
-    #region Public Fields
+	#region Public Fields
+	[SerializeField]
+	private float speed = 3.0f;
 	#endregion
 
 
@@ -23,7 +25,7 @@ public class InvaderTrigger : MonoBehaviour
 	}
 	private void Update()
 	{
-		
+		transform.Translate(Vector3.up * speed * Time.deltaTime);
 	}
     #endregion
 
@@ -39,11 +41,13 @@ public class InvaderTrigger : MonoBehaviour
     #region Private Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Laser"))
+        if(collision.gameObject.CompareTag("Boundary"))
         {
-            GameManager.instance.Invaders.Remove(gameObject);
-            Destroy(this.gameObject);
-            GameManager.instance.AddScore(10);
+			Destroy(this.gameObject);
+        }
+		if(collision.gameObject.CompareTag("Player"))
+        {
+			Destroy(this.gameObject);
         }
     }
     #endregion
