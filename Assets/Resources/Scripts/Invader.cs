@@ -49,5 +49,6 @@ public class Invader : MonoBehaviour
 
         _spriteRenderer.sprite = this.animationSprites[_animationFrame];
     }
+
     #endregion
 }

@@ -32,15 +32,15 @@ public class InvaderMove : MonoBehaviour
 		Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 		if (direction == Vector3.left && transform.position.x <= leftEdge.x)
         {
-			AdvancedRow();
+			InvadersMove();
         }
 		else if(direction == Vector3.right && transform.position.x >= (rightEdge.x -4.0f))
         {
-			AdvancedRow();
+			InvadersMove();
         }
 
     }
-	private void AdvancedRow()
+	private void InvadersMove()
     {
 		direction.x *= -1.0f;
 		Vector3 position = this.transform.position;

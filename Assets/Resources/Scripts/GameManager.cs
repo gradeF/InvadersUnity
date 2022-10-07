@@ -45,10 +45,12 @@ public class GameManager : MonoBehaviour
 		if(isGameOver && Input.GetKeyDown(KeyCode.Return))
         {
 			SceneManager.LoadScene("01Game");
+			Time.timeScale = 1;
         }
 		else if(isGameOver && Input.GetKeyDown(KeyCode.Escape))
         {
 			SceneManager.LoadScene("00Start");
+			Time.timeScale = 1;
         }
 		
 	}
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
 		isGameOver = true;
 		gameoverUI.SetActive(true);
+		Time.timeScale = 0;
     }
 	#endregion
 

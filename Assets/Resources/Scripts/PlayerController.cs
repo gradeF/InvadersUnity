@@ -6,11 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     #region Public Fields
     public GameObject[] lifelist;
+    public int life = 3;
     #endregion
 
     #region Private Fields
     private bool isDead = false;
-    private static int life = 3;
+    
     [SerializeField]
     private float playerSpeed = 3.0f;
     #endregion

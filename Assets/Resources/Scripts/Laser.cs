@@ -15,6 +15,8 @@ public class Laser : MonoBehaviour
 
 
 	#region Private Fields
+	private float maxTime = 1.0f;
+	private float time;
 	#endregion
 
 
@@ -25,13 +27,13 @@ public class Laser : MonoBehaviour
 	}
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Space))
+		time += Time.deltaTime;
+		if(time >= maxTime)
         {
-			if(laser != null)
-            {
-				Instantiate(laser, transform.position, transform.rotation);
-            }
-        }
+			LaserShoot();
+			
+		}
+		
 	}
 	#endregion
 
@@ -45,5 +47,16 @@ public class Laser : MonoBehaviour
 
 
 	#region Private Methods
+	private void LaserShoot()
+    {
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (laser != null)
+			{
+				Instantiate(laser, transform.position, transform.rotation);
+				time = 0.0f;
+			}
+		}
+	}
 	#endregion
 }

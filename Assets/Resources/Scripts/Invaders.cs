@@ -69,11 +69,13 @@ public class Invaders : MonoBehaviour
     {
 		var invaderGroups = GameManager.instance.Invaders.GroupBy(i => i.transform.position.x);
 		var randomGroup = invaderGroups.ElementAt(Random.Range(0, invaderGroups.Count()));
+
 		var orderedGroup = randomGroup.OrderBy(i => i.transform.position.y);
 
 		GameObject bottomInvader = orderedGroup.First();
 
-		Instantiate(Laser, transform);
+		Instantiate(Laser, bottomInvader.transform);
+		
 	}
 
 	#endregion
