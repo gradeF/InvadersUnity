@@ -7,7 +7,6 @@ TagManager:
   - Boundary
   - Laser
   - Invader
-  - Attack
   - Missile
   layers:
   - Default

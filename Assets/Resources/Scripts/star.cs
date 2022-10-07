@@ -36,7 +36,10 @@ public class star : MonoBehaviour
     #region Private Methods
     IEnumerator Twinkle()
     {
-        yield return null;
+        yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+        _sprite.enabled = false;
+        yield return new WaitForSeconds(Random.Range(0.0f, 2.0f));
+        _sprite.enabled = true;
     }
     #endregion
 }
